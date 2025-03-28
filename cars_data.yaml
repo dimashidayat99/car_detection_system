@@ -1,0 +1,6 @@
+
+    train: car_data/image/cars_train
+    val: car_data/image/cars_test
+    nc: 1
+    names: ['car']
+    
