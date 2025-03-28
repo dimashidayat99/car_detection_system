@@ -8,7 +8,8 @@ import re
 import cv2
 
 # import the car detection and car classifier model
-model = YOLO(r"runs\detect\train5\weights\best.pt")
+model_path = "runs/detect/train5/weights/best.pt"
+model = YOLO(model_path)
 car_classifier = pipeline("image-classification", model="SriramSridhar78/sriram-car-classifier")
 
 # set title
