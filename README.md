@@ -1,6 +1,6 @@
 # Car Detection and Classification App
 
-This Streamlit application detects cars in uploaded images and classifies them using YOLO11 for object detection and a Hugging Face Transformers model for car classification. The apps can be directly deploy since I already train the model and setup all the files for deployment. The initial process of data science life cycle begin with file `car-detection.py`. You may skip this instruction to the [Installation](#6-installation) and [Live Application](#9-live-application). In addition, this repository also have the file `faster-rcnn.py` for faster-RCNN modelling. However, the computational cost is too high to train 2gb data using my computer, hence I can't really compared the other deep learning model such as Faster-RCNN and SSD.
+This Streamlit application detects cars in uploaded images and classifies them using YOLO11 for object detection and a Hugging Face Transformers model for car classification. The apps can be directly deploy since I already train the model and setup all the files for deployment. The initial process of data science life cycle begin with file `car-detection.py`. You may skip this instruction to the [Installation](#7-installation) and [Live Application](#10-live-application). In addition, this repository also have the file `faster-rcnn.py` for faster-RCNN modelling. However, the computational cost is too high to train 2gb data using my computer, hence I can't really compared the other deep learning model such as Faster-RCNN and SSD.
 
 ## 1. Data Loading and Exploration
 
@@ -67,8 +67,12 @@ This Streamlit application detects cars in uploaded images and classifies them u
 5.  **Metrics Visualization:**
     -   A bar plot is generated to visualize the combined evaluation metrics.
     -   The plot includes labels and values for each metric, with different colors for detector and classifier metrics.
+  
+## 5. Evaluation Results
 
-## 5. Dependencies
+![](evaluation.png)
+
+## 6. Dependencies
 
 -   `kagglehub`
 -   `ultralytics`
@@ -82,7 +86,7 @@ This Streamlit application detects cars in uploaded images and classifies them u
 -   `PIL`
 -   `jellyfish`
 
-## 6. Installation
+## 7. Installation
 
 1.  **Clone the Repository (if applicable):**
     ```bash
@@ -112,7 +116,7 @@ This Streamlit application detects cars in uploaded images and classifies them u
     -   Ensure the YOLO11 model file (`best.pt`) is located in the `runs/detect/train5/weights/` directory. If you have a different path, make sure to change the path inside the streamlit app code.
     -   If you need to train your own model, follow the ultralytics documentation.
 
-## 7. Deployment on Streamlit Cloud
+## 8. Deployment on Streamlit Cloud
 
 1.  **Prepare your Repository:**
     -   Ensure your repository contains:
@@ -162,7 +166,7 @@ This Streamlit application detects cars in uploaded images and classifies them u
     -   Verify that the model file is accessible by your application.
     -   Make sure the file paths are correct.
 
-## 8. Usage
+## 9. Usage
 
 1.  Open the deployed Streamlit app in your browser.
 2.  Click "Browse files" to upload one or more image files.
@@ -170,7 +174,7 @@ This Streamlit application detects cars in uploaded images and classifies them u
 4.  The manufacturer and model of each classified car will be shown below the cropped car image.
 5.  The app will also detect and classify multiple cars within a single image.
 
-## 9. Live Application
+## 10. Live Application
 
 The live application is ready to use at:
 https://cardetectionsystem-assessment.streamlit.app/
