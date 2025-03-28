@@ -6,7 +6,7 @@ This Streamlit application detects cars in uploaded images and classifies them u
 
 1.  **Clone the Repository (if applicable):**
     ```bash
-    git clone <your_repository_url>
+    git clone https://github.com/dimashidayat99/car_detection_system.git
     cd <your_repository_directory>
     ```
 
