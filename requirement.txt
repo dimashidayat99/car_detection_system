@@ -1,0 +1,6 @@
+streamlit
+Pillow
+ultralytics
+transformers
+opencv-python
+regex
