@@ -2,5 +2,5 @@ streamlit
 Pillow
 ultralytics
 transformers
-opencv-python
+python3-opencv
 regex
