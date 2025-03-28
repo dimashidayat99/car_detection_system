@@ -1,20 +1,23 @@
 # Car Detection and Classification App
 
-This Streamlit application detects cars in uploaded images and classifies them using YOLO11 for object detection and a Hugging Face Transformers model for car classification. The apps can be directly deploy since I already train the model and setup all the files for deployment. The initial process of data science life cycle begin with file `car-detection.py`. You may skip this instruction to the [Installation](#7-installation) and [Live Application](#10-live-application). In addition, this repository also have the file `faster-rcnn.py` for faster-RCNN modelling. However, the computational cost is too high to train 2gb data using my computer, hence I can't really compared the other deep learning model such as Faster-RCNN and SSD.
+This Streamlit application detects cars in uploaded images and classifies them using YOLO11 for object detection and a Hugging Face Transformers model (Sriram-car-classifier) for car classification. The apps can be directly deploy since the model already been trained and all the file has been setup for deployment requirement. The initial process of data science life cycle begin with file `car-detection.py`. You may skip this instruction to the [Installation](#7-installation) and [Live Application](#10-live-application). In addition, this repository also have the file `faster-rcnn.py` for faster-RCNN modelling. However, the computational cost is too high to train 2gb data using my computer, hence I can't really compared the other deep learning model such as Faster-RCNN and SSD.
 
 ## 1. Data Loading and Exploration
+
+**Please change any directory in the file to your directory**
 
 1.  **Dataset Loading:**
     -   The Stanford Cars Dataset is loaded from Kaggle using `kagglehub`.
     -   Annotation data is loaded from `cars_annos.mat` using `scipy.io`.
     -   Class names are extracted from `cars_meta.mat`.
+    -   There are some error with this dataset where the cars is label incorrectly. So this [dataset](https://www.kaggle.com/code/subhangaupadhaya/pytorch-stanfordcars-classification/input), it consist the updated version of stanford car dataset with the right label.
 
 2.  **Data Preprocessing:**
     -   Annotation data is converted from a dictionary to a Pandas DataFrame.
     -   A label dictionary is created to map class IDs to class names.
-    -   Functions are defined to load and plot images with bounding boxes.
 
 3.  **Data Visualization:**
+    -   Functions are defined to load and plot images with bounding boxes.
     -   Sample images are displayed with their class names and bounding boxes using `matplotlib`.
     -   The dataset is explored for inconsistencies in the annotation data, and a corrected annotation file is used.
 
@@ -24,6 +27,7 @@ This Streamlit application detects cars in uploaded images and classifies them u
     -   Functions are defined to create YOLO-compatible text files from the annotation DataFrame.
     -   Bounding box coordinates are normalized to the range \[0, 1].
     -   Text files are generated for both training and testing datasets.
+    -   The images are automatically resized by ultralytics so no need manual resizing.
 
 2.  **Data Organization:**
     -   Image and label files are moved to appropriate directories (`car_data/image` and `car_data/label`).
@@ -43,7 +47,7 @@ This Streamlit application detects cars in uploaded images and classifies them u
     -   The trained model weights are saved.
 
 3.  **Model Evaluation (Detection):**
-    -   The trained model is evaluated using the validation dataset.
+    -   The trained model is evaluated using the test dataset.
     -   Metrics such as precision, recall, and mAP are calculated.
     -   Intersection over Union (IoU) is calculated to assess bounding box accuracy.
 
@@ -72,7 +76,7 @@ This Streamlit application detects cars in uploaded images and classifies them u
 
 ![](evaluation.png)
 
-The evaluation results shows the YOLO11 and Sriram-car-classifier reach more than 90% across all metrics. The detector achieving near-perfect scores across precision, recall, mAP, fitness, and IoU, indicating high accuracy in identifying cars, while the classifier exhibits a strong similarity score, suggesting accurate differentiation of car attributes or classes.
+The evaluation results shows the YOLO11 and Sriram-car-classifier reach more than 90% across all metrics. The detector achieving near-perfect scores across precision, recall, mAP, fitness, and IoU, indicating high accuracy in identifying cars, while the classifier exhibits a strong similarity score, suggesting accurate classification and differetiating of car manufacturer and model.
 
 ## 6. Dependencies
 
@@ -116,7 +120,7 @@ The evaluation results shows the YOLO11 and Sriram-car-classifier reach more tha
 
 4.  **Download the YOLO11 Model:**
     -   Ensure the YOLO11 model file (`best.pt`) is located in the `runs/detect/train5/weights/` directory. If you have a different path, make sure to change the path inside the streamlit app code.
-    -   If you need to train your own model, follow the ultralytics documentation.
+    -   If you need to train your own model, follow my initial steps or the ultralytics documentation.
 
 ## 8. Deployment on Streamlit Cloud
 
