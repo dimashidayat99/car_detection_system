@@ -50,7 +50,7 @@ This Streamlit application detects cars in uploaded images and classifies them u
 4.  **Prediction:**
     -   The trained YOLO model is used to predict bounding boxes on the test dataset.
 
-## 4. Model Evaluation - Car Classifier
+## 4. Model Evaluation - Car Classifier (sriram-car-classifier)
 
 1.  **Classifier Initialization:**
     -   A pre-trained car classification model is initialized using the Hugging Face `pipeline`.
@@ -71,6 +71,8 @@ This Streamlit application detects cars in uploaded images and classifies them u
 ## 5. Evaluation Results
 
 ![](evaluation.png)
+
+The evaluation results shows the YOLO11 and Sriram-car-classifier reach more than 90% across all metrics. The detector achieving near-perfect scores across precision, recall, mAP, fitness, and IoU, indicating high accuracy in identifying cars, while the classifier exhibits a strong similarity score, suggesting accurate differentiation of car attributes or classes.
 
 ## 6. Dependencies
 
