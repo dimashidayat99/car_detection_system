@@ -119,23 +119,33 @@ This Streamlit application detects cars in uploaded images and classifies them u
         -   `app.py` (your Streamlit application script). In my case, my app name `gui.py`
         -   `requirements.txt` (a list of your Python dependencies). This can be obtained through my `requirement.txt`
         -   `packages.txt` (a list of graphics library). This can be obtained through my `packages.txt`
-        -   The trained YOLOv8 model file (`runs/detect/train5/weights/best.pt` or your custom path).
+        -   The trained YOLO11 model file (`runs/detect/train5/weights/best.pt` or your custom path).
         -   Any other necessary files.
 
 2.  **Create `requirements.txt`:**
     -   Create a file named `requirements.txt` in the root of your repository.
     -   Add the following dependencies to the `requirements.txt` file:
         ```
-        streamlit
-        pillow
+        streamlit>=1.20.0
+        torch>=2.0.0
+        Pillow
         ultralytics
         transformers
         opencv-python
         regex
         ```
     -   If you have specific versions, add them like this: `streamlit==1.20.0`
+  
+3.  **Create `packages.txt`:**
+    -   Create a file named `packages.txt` in the root of your repository.
+    -   Add the following dependencies to the `packages.txt` file:
+        ```
+        libgl1
+        libgl1-mesa-glx
+        libegl1-mesa
+        ```
 
-3.  **Streamlit Cloud Setup:**
+4.  **Streamlit Cloud Setup:**
     -   Go to [Streamlit Cloud](https://streamlit.io/cloud).
     -   Sign up or log in with your GitHub account.
     -   Click "New app".
@@ -143,27 +153,12 @@ This Streamlit application detects cars in uploaded images and classifies them u
     -   Specify the following:
         -   **Repository:** Your GitHub repository.
         -   **Branch:** The branch containing your app (usually `main` or `master`).
-        -   **Main file path:** `app.py`.
+        -   **Main file path:** `yourfilename.py` for me it is `gui.py`
         -   Click "Deploy!".
-
-4.  **Handling Model Files:**
-    -   Streamlit Cloud has limitations on file sizes. If your YOLOv8 model (`best.pt`) is large, consider these options:
-        -   **Git LFS (Large File Storage):** If your model exceeds 100MB, use Git LFS to manage large files in your repository.
-            ```bash
-            git lfs install
-            git lfs track "runs/detect/train5/weights/best.pt"
-            git add .gitattributes
-            git add runs/detect/train5/weights/best.pt
-            git commit -m "Add model using Git LFS"
-            git push
-            ```
-        -   **External Hosting (Not Recommended but Possible):** You can host the model file on an external service (e.g., Google Drive, AWS S3) and download it in your Streamlit app using a URL. However, this is not recommended for streamlit cloud as it will download the model every time the app starts, causing long load times.
-        -   **Reduce Model Size (Recommended):** If possible, try to reduce the model size by quantization or pruning. Or retrain the model with smaller input image sizes.
-    -   Make sure that the path to the model in the app.py code is correct.
 
 5.  **Troubleshooting:**
     -   Check the Streamlit Cloud logs for any errors.
-    -   Ensure all dependencies are correctly listed in `requirements.txt`.
+    -   Ensure all dependencies are correctly listed in `requirements.txt` and `packages.txt`.
     -   Verify that the model file is accessible by your application.
     -   Make sure the file paths are correct.
 
@@ -173,6 +168,7 @@ This Streamlit application detects cars in uploaded images and classifies them u
 2.  Click "Browse files" to upload one or more image files.
 3.  The app will display the images with bounding boxes around detected cars and classify each car.
 4.  The manufacturer and model of each classified car will be shown below the cropped car image.
+5.  The app will also detect and classify multiple cars within a single image.
 
 ## 9. Live Application
 
