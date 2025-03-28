@@ -1,6 +1,6 @@
 # Car Detection and Classification App
 
-This Streamlit application detects cars in uploaded images and classifies them using YOLO11 for object detection and a Hugging Face Transformers model for car classification. The apps can be directly deploy since I already train the model and setup all the files for deployment. The initial process of data science life cycle begin with file `car-detection.py`. You may skip this instruction until installation of the apps.
+This Streamlit application detects cars in uploaded images and classifies them using YOLO11 for object detection and a Hugging Face Transformers model for car classification. The apps can be directly deploy since I already train the model and setup all the files for deployment. The initial process of data science life cycle begin with file `car-detection.py`. You may skip this instruction to the [Installation](## 6. Installation) and [Live Application](## 9. Live Application).
 
 ## 1. Data Loading and Exploration
 
@@ -118,6 +118,7 @@ This Streamlit application detects cars in uploaded images and classifies them u
     -   Ensure your repository contains:
         -   `app.py` (your Streamlit application script). In my case, my app name `gui.py`
         -   `requirements.txt` (a list of your Python dependencies). This can be obtained through my `requirement.txt`
+        -   `packages.txt` (a list of graphics library). This can be obtained through my `packages.txt`
         -   The trained YOLOv8 model file (`runs/detect/train5/weights/best.pt` or your custom path).
         -   Any other necessary files.
 
