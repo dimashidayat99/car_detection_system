@@ -11,7 +11,7 @@ import cv2
 
 model_path = "runs/detect/train5/weights/best.pt"
 model = YOLO(model_path)
-car_classifier = pipeline("image-classification", model="SriramSridhar78/sriram-car-classifier")
+#car_classifier = pipeline("image-classification", model="SriramSridhar78/sriram-car-classifier")
 
 # set title
 st.title("Car Detection App")
@@ -41,11 +41,11 @@ if uploaded_files is not None:
                 st.image(annotated_image, caption=f'Cars Detected with Bounding Boxes in file: {uploaded_file.name}')
 
                 # classifier all the car within the image
-                for i, cropped_car in enumerate(cropped_images):
-                    car_classifier_results = car_classifier(cropped_car)
-                    manufacturer = re.search(r'[^_]*', car_classifier_results[0]['label']).group(0)
-                    model_name = re.search(r'[^_]+_(.*)', car_classifier_results[0]['label']).group(1).replace('_', ' ')
-                    st.image(cropped_car, caption=f"Manufacturer: {manufacturer}, Model: {model_name}", use_column_width=True)
+                #for i, cropped_car in enumerate(cropped_images):
+                 #   car_classifier_results = car_classifier(cropped_car)
+                 #   manufacturer = re.search(r'[^_]*', car_classifier_results[0]['label']).group(0)
+                 #   model_name = re.search(r'[^_]+_(.*)', car_classifier_results[0]['label']).group(1).replace('_', ' ')
+                 #   st.image(cropped_car, caption=f"Manufacturer: {manufacturer}, Model: {model_name}", use_column_width=True)
 
             else:
                 st.write(f"No Cars Detected in file: {uploaded_file.name}.")
