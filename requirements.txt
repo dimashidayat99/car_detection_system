@@ -5,3 +5,4 @@ ultralytics
 transformers
 opencv-python
 regex
+accelerate
